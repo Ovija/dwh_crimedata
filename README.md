@@ -18,19 +18,19 @@ Morrisville Crime Dataset (Live)
 
 🧩 **ETL Pipeline (Lambda Functions)**
 
-    * etl_pipeline.py: Extracts raw crime data from Morrisville’s OpenData API and stores it in a PostgreSQL raw data lake (via RDS).
-    * etl_cleanup.py: Cleans the raw data by dropping irrelevant fields, standardizing values (e.g., city names), handling missing timestamps, and outputs
+    etl_pipeline.py: Extracts raw crime data from Morrisville’s OpenData API and stores it in a PostgreSQL raw data lake (via RDS).
+    etl_cleanup.py: Cleans the raw data by dropping irrelevant fields, standardizing values (e.g., city names), handling missing timestamps, and outputs
     a cleaned dataset into a new PostgreSQL instance.
-    * load_dwh.py: Merges Morrisville and Cary crime datasets and loads them into a consolidated table tbl_crimes in preparation for DWH modeling.
-    * dwh_create.py: Builds a star schema in a data warehouse by creating fact and dimension tables (for crime, location, date), and populates them from
+    load_dwh.py: Merges Morrisville and Cary crime datasets and loads them into a consolidated table tbl_crimes in preparation for DWH modeling.
+    dwh_create.py: Builds a star schema in a data warehouse by creating fact and dimension tables (for crime, location, date), and populates them from
     the cleaned data.
-    * weather_dwh.py: Enriches the fact table with hourly weather data by adding a new dim_weather dimension and connecting it via timestamp.
+    weather_dwh.py: Enriches the fact table with hourly weather data by adding a new dim_weather dimension and connecting it via timestamp.
 
 ## Cloud Architecture (AWS)
 
-    **Lambda:** Serverless compute to run each stage of the ETL pipeline.
-    **RDS PostgreSQL:** Hosted raw and cleaned crime data + final data warehouse.
-    **Environment Variables:** Secured DB credentials and endpoints are managed via AWS Lambda configuration.
+    Lambda: Serverless compute to run each stage of the ETL pipeline.
+    RDS PostgreSQL: Hosted raw and cleaned crime data + final data warehouse.
+    Environment Variables: Secured DB credentials and endpoints are managed via AWS Lambda configuration.
 
 ## Data Warehouse Design (Star Schema)
 
