@@ -33,9 +33,11 @@ Morrisville Crime Dataset (Live)
     **Environment Variables:** Secured DB credentials and endpoints are managed via AWS Lambda configuration.
 
 ## Data Warehouse Design (Star Schema)
-Table |	Type | Description
-dim_location | Dimension | Geolocation attributes (city, district, lat/lon)
-dim_date | Dimension | Timestamp attributes (weekday, month, year)
-dim_crime | Dimension | Crime categories (e.g., Assault, Theft)
-dim_weather | Dimension | Temperature, rain, cloud cover, wind, etc.
-factless_fact | Fact (main) | Joins all IDs and links weather to crime
+
+| Table           | Type         | Description                                                  |
+|----------------|--------------|--------------------------------------------------------------|
+| dim_location   | Dimension    | Geolocation attributes (city, district, lat/lon)             |
+| dim_date       | Dimension    | Timestamp attributes (weekday, month, year)                  |
+| dim_crime      | Dimension    | Crime categories (e.g., Assault, Theft)                      |
+| dim_weather    | Dimension    | Temperature, rain, cloud cover, wind, etc.                   |
+| factless_fact  | Fact (main)  | Joins all IDs and links weather to crime                     |
